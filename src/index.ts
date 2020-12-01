@@ -6,7 +6,11 @@ const chillThreshold = 2.5;
 
 export const black = '#000000';
 export const dark = '#25292E';
-const white = '#ffffff';
+export const white = '#ffffff';
+
+export function isBlackOrWhite(color: string): boolean {
+  return chroma(color).hex() === black || chroma(color).hex() === white;
+}
 
 export function isChill(color: string): boolean {
   const chillness = Number(chroma.contrast(color, white).toFixed(2));
@@ -14,8 +18,8 @@ export function isChill(color: string): boolean {
 }
 
 export default function makeColorMoreChill(color: string) {
-  // True black does not chill well with our interfaces, lets make it more chill.
-  if (chroma(color).hex() === black) return dark;
+  // Pure white and pure black do not chill well with our interfaces, lets make it more chill.
+  if (isBlackOrWhite(color)) return dark;
 
   // Return the color if it's already totally chill and doesn't need to be messed with.
   if (isChill(color)) return color;
