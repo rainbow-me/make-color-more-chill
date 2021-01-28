@@ -2,7 +2,7 @@
   "name": "make-color-more-chill",
   "author": "Michael Demarais",
   "module": "dist/make-color-more-chill.esm.js",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -54,6 +54,7 @@
     "typescript": "^4.1.2"
   },
   "dependencies": {
-    "chroma-js": "^2.1.0"
+    "chroma-js": "^2.1.0",
+    "zod": "^1.11.11"
   }
 }
