@@ -16,11 +16,17 @@ export const fallbackColors = {
   [Theme.enum.light]: '#25292E',
 };
 
+const lighten = (color: any, hslPercent: number) =>
+  color.set('hsl.l', color.get('hsl.l') + hslPercent);
+const darken = (color: any, hslPercent: number) => lighten(color, -hslPercent);
+
 function incrementChillness(color: string, theme: ThemeType) {
   const slightlyChillerColor =
-    theme === Theme.enum.dark ? c(color).brighten(0.02) : c(color).darken(0.02);
+    theme === Theme.enum.dark
+      ? lighten(c(color), 0.02)
+      : darken(c(color), 0.02);
 
-  return slightlyChillerColor.saturate(0.02).hex();
+  return slightlyChillerColor.saturate(0.04).hex();
 }
 
 export function isBlackOrWhite(color: string): boolean {
